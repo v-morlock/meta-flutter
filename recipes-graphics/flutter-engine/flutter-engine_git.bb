@@ -160,7 +160,7 @@ do_install() {
 }
 
 FILES_${PN} = " \
-    ${bindir}/icudtl.dat \
+    ${libdir}/icudtl.dat \
     ${libdir}/libflutter_engine.so \
     "
 
