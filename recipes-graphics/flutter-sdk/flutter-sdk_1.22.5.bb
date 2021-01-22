@@ -4,10 +4,10 @@ WEBSITE = "https://flutter.dev/"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1d84cf16c48e571923f837136633a265"
 
-SRC_URI = "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.22.5-stable.tar.xz"
-SRC_URI[sha256sum] = "4a9624921f1130126c67411443ae1aaa5b1913bbd52adafb71d726c93e9b65b7"
+SRC_URI = "git://github.com/flutter/flutter.git;branch=stable"
+SRCREV="78910062997c3a836feee883712c241a5fd22983"
 
-S = "${WORKDIR}/flutter"
+S = "${WORKDIR}/git"
 
 DEPENDS = "curl unzip"
 
@@ -17,6 +17,7 @@ do_install() {
 }
 
 FILES_${PN}-dev = "${datadir}/flutter/sdk/*"
+FILES_${PN}-dev += "${datadir}/flutter/sdk/.*"
 
 INSANE_SKIP_${PN} = "already-stripped"
 
