@@ -9,6 +9,7 @@ FILESEXTRAPATHS_prepend_poky := "${THISDIR}/files:"
 SRC_URI = "file://sysroot_gni.patch \
            file://custom_BUILD_gn.patch \
            file://icu.patch \
+           file://gn.patch \
            "
 
 S = "${WORKDIR}/git/src"
@@ -102,6 +103,7 @@ do_patch() {
     python3 ${STAGING_BINDIR_NATIVE}/depot_tools/gclient.py sync --nohooks --no-history --revision ${SRCREV} ${PARALLEL_MAKE} -v
     git apply ../../sysroot_gni.patch
     git apply ../../custom_BUILD_gn.patch
+    git apply ../../gn.patch
 
     cd third_party/icu
     git apply ../../../../icu.patch
@@ -127,7 +129,7 @@ do_configure() {
 
     cd ${S}
 
-    ./flutter/tools/gn ${GN_ARGS} --disable-desktop-embeddings
+    python3 ./flutter/tools/gn ${GN_ARGS} --disable-desktop-embeddings
 
     echo ${ARGS_GN_APPEND} >> ${ARGS_GN_FILE}
 
