@@ -147,12 +147,11 @@ do_install() {
 
     cd ${S}/${@get_out_dir(d)}
 
-    install -d ${D}${bindir}
     install -d ${D}${libdir}
     install -d ${D}${includedir}
     install -d ${D}${datadir}/flutter/engine/flutter_patched_sdk
 
-    install -m 644 icudtl.dat ${D}${bindir}
+    install -m 644 icudtl.dat ${D}${libdir}
     install -m 755 libflutter_engine.so ${D}${libdir}
     install -m 644 flutter_embedder.h ${D}${includedir}
 #    install -m 755 clang_x64/gen_snapshot ${D}${bindir}
