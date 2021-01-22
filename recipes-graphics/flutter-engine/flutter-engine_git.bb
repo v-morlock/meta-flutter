@@ -73,7 +73,7 @@ do_patch() {
     export SSH_AGENT_PID=${SSH_AGENT_PID}
 
     cd ${S}/..
-    gclient.py config --spec 'solutions = [
+    python3 ${STAGING_BINDIR_NATIVE}/depot_tools/gclient.py config --spec 'solutions = [
         {
             "managed" : False,
             "name" : "src/flutter",
@@ -99,7 +99,7 @@ do_patch() {
     fi
 
     cd ${S}
-    gclient.py sync --nohooks --no-history --revision ${SRCREV} ${PARALLEL_MAKE} -v
+    python3 ${STAGING_BINDIR_NATIVE}/depot_tools/gclient.py sync --nohooks --no-history --revision ${SRCREV} ${PARALLEL_MAKE} -v
     git apply ../../sysroot_gni.patch
     git apply ../../custom_BUILD_gn.patch
 
