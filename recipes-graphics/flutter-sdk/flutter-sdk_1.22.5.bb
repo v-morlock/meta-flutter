@@ -10,6 +10,7 @@ SRCREV="78910062997c3a836feee883712c241a5fd22983"
 S = "${WORKDIR}/git"
 
 DEPENDS = "curl unzip"
+RDEPENDS_${PN} = "bash curl file perl git unzip xz zip"
 
 do_install() {
     install -d ${D}${datadir}/flutter/sdk
